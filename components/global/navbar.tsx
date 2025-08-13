@@ -10,7 +10,6 @@ import UserProfile from "@/components/common/user-profile";
 import ProductSearch from "@/components/common/product/product-search";
 import MenuDrawer from "@/components/common/menu-drawer";
 import LeftSidebar from "@/components/common/left-sidebar";
-import { useModalStore, Modal } from "@/lib/stores";
 import { useRouter } from "next/navigation";
 
 interface INavItem {
@@ -41,35 +40,26 @@ export default function Navbar() {
   return (
     <>
       <div id="scroll-top">
-        <div className="container mx-auto px-8 sm:px-4 py-3 sm:py-4 grid grid-cols-[1fr_130px_1fr] md:grid-cols-[1fr_150px_1fr]">
-          {/* Left Section */}
-          <div className="flex-1 w-auto flex items-center justify-start gap-4">
-            {/* Search Bar */}
-            <LeftSidebar />
-            <ProductSearch />
+        <div className="container mx-auto px-8 sm:px-4 py-3 sm:py-4 flex justify-between items-center">
+          {/* Logo */}
+          <div className="w-auto flex items-center justify-start gap-4">
+            <Link href="/" className="flex justify-center items-center">
+              <Image
+                src={ASSETS["zecond-logo-black.png"] || "/placeholder.svg"}
+                alt="ZECOND CLOSET SALE"
+                width={120}
+                height={60}
+                className="-mt-2 flex-1"
+                priority
+              />
+            </Link>
           </div>
 
-          {/* Logo */}
-          <Link href="/" className="flex justify-center items-center">
-            <Image
-              src={ASSETS["zecond-logo-black.png"] || "/placeholder.svg"}
-              alt="ZECOND CLOSET SALE"
-              width={120}
-              height={60}
-              className="-mt-2 flex-1"
-              priority
-            />
-          </Link>
-
           {/* Right Section */}
-          <div className="flex-1 flex items-center justify-end gap-4 sm:gap-7">
-            {/* User's Profile */}
-            <UserProfile />
+          <div className="flex items-center justify-end gap-4 sm:gap-7">
+            <ProductSearch />
 
-            <Link
-              href="/help"
-              className="hidden xl:ml-[140px] sm:flex items-center"
-            >
+            <Link href="/help" className="hidden sm:flex items-center">
               <Image
                 src={ASSETS["chat-black.svg"] || "/placeholder.svg"}
                 alt="Ayuda"
@@ -78,8 +68,12 @@ export default function Navbar() {
                 className="w-7 h-7"
               />
             </Link>
+
             <CartDropdown />
             <MenuDrawer navItems={navItems} />
+            <LeftSidebar />
+            {/* User's Profile */}
+            <UserProfile />
           </div>
         </div>
         {/* Navigation */}
