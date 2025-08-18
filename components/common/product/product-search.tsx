@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { ASSETS } from "@/lib/constants";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { useRouter } from "next/navigation";
-import { cn, imageUrl } from "@/lib/utils";
+import { cn, formatCurrency, imageUrl } from "@/lib/utils";
 import { useGlobalStore } from "@/lib/stores";
 
 const popularNow = ["Polos", "Pantalones", "Camisas", "Chompas"];
@@ -185,11 +185,11 @@ function SearchSuggestions(props: {
                 </div>
                 <div className="space-y-1">
                   <p className="text-sm font-bold">
-                    $
-                    {(item.isAuction && item.bids.length
-                      ? item.bids[0].amount
-                      : item.price
-                    ).toFixed(2)}
+                    {formatCurrency(
+                      item.isAuction && item.bids.length
+                        ? item.bids[0].amount
+                        : item.price,
+                    )}
                   </p>
                   <h4 className="text-neutral-400 font-bold line-clamp-2">
                     {item.title}

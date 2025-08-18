@@ -7,7 +7,7 @@ import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ASSETS } from "@/lib/constants";
 import { ChevronRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, formatCurrency } from "@/lib/utils";
 import { Modal, useModalStore } from "@/lib/stores";
 import Checkbox1 from "../checkbox-1";
 
@@ -169,7 +169,7 @@ function PlanCheckBox(props: {
             {props.plan.name}
           </div>
           <div className="text-xs sm:text-sm text-gray-500">
-            $ {props.plan.price},00 {t("common.monthly")}
+            {formatCurrency(props.plan.price)} {t("common.monthly")}
           </div>
         </div>
       </div>

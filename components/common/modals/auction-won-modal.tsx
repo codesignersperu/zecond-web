@@ -9,7 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ASSETS } from "@/lib/constants";
 import { useModalStore, Modal } from "@/lib/stores";
-import { imageUrl } from "@/lib/utils";
+import { formatCurrency, imageUrl } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -70,7 +70,7 @@ export default function AuctionWonModal() {
           </div>
           <p className="text-xl text-center">{data?.productTitle}</p>
           <p className="text-xl font-bold text-center mb-6">
-            $ {data?.amount.toFixed(2)}
+            {formatCurrency(data?.amount || 0)}
           </p>
           <div className="flex flex-col gap-2 justify-center">
             <Link href={`/${locale}/cart`} scroll>

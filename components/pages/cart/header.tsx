@@ -11,7 +11,7 @@ import { useGetCartItems } from "@/lib/queries";
 import { useApplyPromoCode, useRemoveFromCart } from "@/lib/mutations";
 import { MoonLoader, PulseLoader } from "react-spinners";
 import { useTranslations } from "next-intl";
-import { cn, imageUrl } from "@/lib/utils";
+import { cn, formatCurrency, imageUrl } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import Checkbox1 from "@/components/common/checkbox-1";
 import toast from "react-hot-toast";
@@ -256,11 +256,11 @@ export default function CartHeader() {
                         <span className="sm:hidden font-bold mr-2">
                           Precio:{" "}
                         </span>
-                        ${" "}
-                        {(item.product.isAuction
-                          ? item.product.bids[0].amount
-                          : item.product.price
-                        ).toFixed(2)}
+                        {formatCurrency(
+                          item.product.isAuction
+                            ? item.product.bids[0].amount
+                            : item.product.price,
+                        )}
                       </div>
 
                       {/* Actions */}
@@ -323,11 +323,11 @@ export default function CartHeader() {
                   <div className="space-y-4 text-[#424242]">
                     <div className="flex justify-between">
                       <span>Total de artículos</span>
-                      <span>${subTotal.toFixed(2)}</span>
+                      <span>{formatCurrency(subTotal)}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>{t("common.shipping-cost")}</span>
-                      <span>${config?.deliveryFee.toFixed(2)}</span>
+                      <span>{formatCurrency(config?.deliveryFee)}</span>
                     </div>
 
                     {promoRes &&
@@ -363,7 +363,7 @@ export default function CartHeader() {
                             )}
                           </span>
                           <span>
-                            - {promoRes.discount.type === "amount" ? "$" : ""}
+                            - {promoRes.discount.type === "amount" ? "S/ " : ""}
                             {promoRes.discount.value}
                             {promoRes.discount.type === "percent" ? "%" : ""}
                           </span>
@@ -376,7 +376,7 @@ export default function CartHeader() {
                     <div className="pt-4 border-t">
                       <div className="flex justify-between text-lg font-semibold">
                         <span>Total:</span>
-                        <span>${total.toFixed(2)}</span>
+                        <span>{formatCurrency(total)}</span>
                       </div>
                     </div>
 

@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ASSETS } from "@/lib/constants";
 import Countdown from "react-countdown";
-import { cn, imageUrl } from "@/lib/utils";
+import { cn, formatCurrency, imageUrl } from "@/lib/utils";
 import type { AuctionStatus, IProduct } from "@/lib/types";
 import dayjs from "dayjs";
 import { useLoginPass } from "@/lib/hooks";
@@ -158,7 +158,9 @@ export default function OfferProductCard(props: iProductCardProps) {
           </p>
 
           <p className="font-bold text-sm text-right">
-            ${props.product.myHighestBid || "-"}
+            {props.product.myHighestBid
+              ? formatCurrency(parseFloat(props.product.myHighestBid))
+              : "-"}
           </p>
         </div>
 
@@ -167,7 +169,9 @@ export default function OfferProductCard(props: iProductCardProps) {
 
           <div>
             <p className="font-bold text-sm text-right">
-              ${props.product.bids[0]?.amount.toFixed(2) || "-"}
+              {props.product.bids[0]?.amount
+                ? formatCurrency(props.product.bids[0].amount)
+                : "-"}
             </p>
             {props.product.bids[0]?.bidderId === user?.id && (
               <p className="text-muted-foreground font-normal text-right text-nowrap">

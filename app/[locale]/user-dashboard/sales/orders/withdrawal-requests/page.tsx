@@ -4,7 +4,7 @@ import { ChevronLeft } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import dayjs from "dayjs";
-import { cn, formatAccountNumber } from "@/lib/utils";
+import { cn, formatAccountNumber, formatCurrency } from "@/lib/utils";
 import { useGetMyWithdrawalRequests } from "@/lib/queries/revenue";
 import { PulseLoader } from "react-spinners";
 
@@ -86,7 +86,7 @@ function WithdrawalRequestCard(trx: WithdrawalTransaction) {
       </div>
 
       <div className="flex-1 flex flex-col lg:flex-row gap-2 items-end lg:items-center justify-between">
-        <p className="font-bold">${trx.amount.toFixed(2)}</p>
+        <p className="font-bold">{formatCurrency(trx.amount)}</p>
         <span
           className={cn(
             "inline-block rounded-[10px] text-center px-4 py-2 text-sm font-medium",

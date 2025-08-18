@@ -13,7 +13,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useGetAddresses, useGetConfig, useGetProducts } from "@/lib/queries";
 import { MoonLoader, PulseLoader } from "react-spinners";
-import { cn, imageUrl } from "@/lib/utils";
+import { cn, formatCurrency, imageUrl } from "@/lib/utils";
 import { Modal, useModalStore, useGlobalStore } from "@/lib/stores";
 import SelectAddressModal from "@/components/common/modals/select-address-modal";
 import toast from "react-hot-toast";
@@ -891,11 +891,12 @@ const ItemCard = (props: {
 
         {/* Price */}
         <div className="flex items-center sm:justify-center sm:text-center">
-          <span className="sm:hidden font-bold mr-2">Precio: </span>${" "}
-          {(props.product.isAuction
-            ? props.product.bids[0].amount
-            : props.product.price
-          ).toFixed(2)}
+          <span className="sm:hidden font-bold mr-2">Precio: </span>
+          {formatCurrency(
+            props.product.isAuction
+              ? props.product.bids[0].amount
+              : props.product.price,
+          )}
         </div>
 
         {/* Auction Timer */}
@@ -980,7 +981,7 @@ const MobileItemCard = (props: {
         {/* Quantity & Price */}
         <div className="flex flex-col items-end">
           <p className="sm:hidden font-bold mb-2">
-            ${props.product.price.toFixed(2)}
+            {formatCurrency(props.product.price)}
           </p>
           <p className="sm:hidden font-bold">1</p>
         </div>
@@ -1185,7 +1186,7 @@ const OrderSummary = ({
         <div className="flex justify-between">
           <span>{t("common.total-items")}</span>
           {subTotal ? (
-            <span className="font-medium">${subTotal.toFixed(2)}</span>
+            <span className="font-medium">{formatCurrency(subTotal)}</span>
           ) : (
             <span>-</span>
           )}
@@ -1195,7 +1196,7 @@ const OrderSummary = ({
           <span>{t("dashboard.my-orders.id.shipping-cost")}</span>
           {subTotal ? (
             <span className="font-medium">
-              ${config?.deliveryFee.toFixed(2)}
+              {formatCurrency(config?.deliveryFee || 0)}
             </span>
           ) : (
             <span>-</span>
@@ -1242,7 +1243,7 @@ const OrderSummary = ({
         <div className="pt-4 border-t border-black ">
           <div className="flex justify-between">
             <span className="text-xl font-bold">Total:</span>
-            <span className="text-xl font-bold">${total.toFixed(2)}</span>
+            <span className="text-xl font-bold">{formatCurrency(total)}</span>
           </div>
         </div>
       </div>
@@ -1273,7 +1274,7 @@ const MobileOrderSummary = ({
             {t("common.total-items")} ({numberOfItems})
           </p>
           {subTotal ? (
-            <h4 className="font-bold">${subTotal.toFixed(2)}</h4>
+            <h4 className="font-bold">{formatCurrency(subTotal)}</h4>
           ) : (
             <span>-</span>
           )}
@@ -1317,7 +1318,7 @@ const MobileOrderSummary = ({
                 )}
               </span>
               <span>
-                - {promoRes.discount.type === "amount" ? "$" : ""}
+                - {promoRes.discount.type === "amount" ? "S/" : ""}
                 {promoRes.discount.value}
                 {promoRes.discount.type === "percent" ? "%" : ""}
               </span>
@@ -1326,7 +1327,7 @@ const MobileOrderSummary = ({
       </ul>
       <h3 className="flex justify-between px-4 text-xl font-bold">
         <span>Total</span>
-        <span>${total ? total.toFixed(2) : 0.0}</span>
+        <span>{formatCurrency(total ? total : 0)}</span>
       </h3>
     </div>
   );
@@ -1357,7 +1358,7 @@ const ShowOrderSummary = (props: {
         />
       </p>
 
-      <h3 className="text-xl">${props.total.toFixed(2)}</h3>
+      <h3 className="text-xl">{formatCurrency(props.total)}</h3>
     </div>
   );
 };
@@ -1412,7 +1413,7 @@ const MobileSummaryDrawer = ({
                 </div>
 
                 {/* Price */}
-                <div className="font-bold">${product.price.toFixed(2)}</div>
+                <div className="font-bold">{formatCurrency(product.price)}</div>
               </div>
             );
           })}

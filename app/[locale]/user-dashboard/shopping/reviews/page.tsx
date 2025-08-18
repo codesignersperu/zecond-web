@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useGetMyReviews } from "@/lib/queries";
 import { PulseLoader } from "react-spinners";
-import { imageUrl } from "@/lib/utils";
+import { formatCurrency, imageUrl } from "@/lib/utils";
 import ReviewOrderModal from "@/components/common/modals/review-order-modal";
 import { Modal, useModalStore } from "@/lib/stores";
 
@@ -51,11 +51,11 @@ export default function ReviewsPage() {
                 {item.product.title}
               </h3>
               <p className="text-[#424242] font-bold">
-                $
-                {(item.product.isAuction
-                  ? item.product.bids[0].amount
-                  : item.product.price
-                ).toFixed()}
+                {formatCurrency(
+                  item.product.isAuction
+                    ? item.product.bids[0].amount
+                    : item.product.price,
+                )}
               </p>
               <Button
                 variant={item.status === "reviewed" ? "secondary" : "default"}

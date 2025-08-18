@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ASSETS } from "@/lib/constants";
 import { Card } from "@/components/ui/card";
-import { cn, imageUrl } from "@/lib/utils";
+import { cn, formatCurrency, imageUrl } from "@/lib/utils";
 import { OrderStatusModal } from "@/components/common/modals/order-status-modal";
 import { useGetOrder } from "@/lib/queries";
 import { PulseLoader } from "react-spinners";
@@ -140,7 +140,7 @@ export default function OrderDetailsPage(props: {
                         <span className="sm:hidden mr-2 font-bold">
                           {t("common.price")}:{" "}
                         </span>
-                        $ {item.product.price.toFixed(2)}
+                        {formatCurrency(item.product.price)}
                       </p>
                     </div>
                   </Card>
@@ -198,7 +198,7 @@ export default function OrderDetailsPage(props: {
                           </span>
                         </span>
                         <span className="font-bold">
-                          $ {order.data.subTotal.toFixed(2)}
+                          {formatCurrency(order.data.subTotal)}
                         </span>
                       </div>
                       <div className="flex justify-between">
@@ -206,7 +206,7 @@ export default function OrderDetailsPage(props: {
                           {t("common.shipping-methods")}
                         </span>
                         <span className="font-bold">
-                          $ {order.data.shippingCost?.toFixed(2)}
+                          {formatCurrency(order.data.shippingCost || 0)}
                         </span>
                       </div>
                       <div className="flex justify-between font-medium">
@@ -214,7 +214,7 @@ export default function OrderDetailsPage(props: {
                           {t("common.paid")}:
                         </span>
                         <span className="font-bold">
-                          $ {order.data.total.toFixed(2)}
+                          {formatCurrency(order.data.total)}
                         </span>
                       </div>
                     </div>

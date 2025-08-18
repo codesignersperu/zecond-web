@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ASSETS } from "@/lib/constants";
 import Countdown from "react-countdown";
-import { cn, imageUrl } from "@/lib/utils";
+import { cn, formatCurrency, imageUrl } from "@/lib/utils";
 import type { AuctionStatus, IProduct } from "@/lib/types";
 import { useAddToCart } from "@/lib/mutations";
 import { ComponentRef, useEffect, useMemo, useRef, useState } from "react";
@@ -237,7 +237,9 @@ export default function ProductCard(props: iProductCardProps) {
               {props.product.isAuction && (
                 <span className="text-sm">{t("product.info.from")}</span>
               )}
-              <span className="font-bold">${props.product.price}</span>
+              <span className="font-bold">
+                {formatCurrency(props.product.price)}
+              </span>
             </div>
 
             <button

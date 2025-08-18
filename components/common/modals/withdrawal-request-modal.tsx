@@ -25,7 +25,7 @@ import {
 } from "@/lib/mutations";
 import AutoWidthInput from "../auto-width-input";
 import toast from "react-hot-toast";
-import { formatAccountNumber } from "@/lib/utils";
+import { formatAccountNumber, formatCurrency } from "@/lib/utils";
 
 type Account = {
   id: number;
@@ -131,7 +131,7 @@ export function WithdrawalRequestModal({
               {t("modals.withdrawal.enter-amount")}
             </div>
             <div className="flex items-center justify-center gap-2 text-2xl font-semibold">
-              <span>$</span>
+              <span>S/</span>
               <AutoWidthInput
                 type="number"
                 id="offer-bid-input"
@@ -142,8 +142,8 @@ export function WithdrawalRequestModal({
               />
             </div>
             <div className="text-gray-400 text-sm mt-2">
-              {t("modals.withdrawal.available-balance")}: $
-              {availableBalance?.toFixed(2)}
+              {t("modals.withdrawal.available-balance")}:
+              {formatCurrency(availableBalance || 0)}
             </div>
           </div>
         </div>

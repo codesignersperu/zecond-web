@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { ASSETS } from "@/lib/constants";
 import { OrderItem } from "@/lib/types";
-import { imageUrl } from "@/lib/utils";
+import { formatCurrency, imageUrl } from "@/lib/utils";
 
 interface OrderDetailsModalProps {
   isOpen: boolean;
@@ -95,7 +95,7 @@ export default function OrderDetailsModal({
                   </p>
                   <p className="text-base font-bold">
                     <span className="sm:hidden mr-1">{t("common.price")}:</span>
-                    $ {item.product.price.toFixed(2)}
+                    {formatCurrency(item.product.price)}
                   </p>
                 </div>
               </div>

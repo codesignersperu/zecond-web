@@ -9,7 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ASSETS } from "@/lib/constants";
 import { useModalStore, Modal } from "@/lib/stores";
-import { imageUrl } from "@/lib/utils";
+import { formatCurrency, imageUrl } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 
 export default function AddedToCartModal() {
@@ -66,7 +66,7 @@ export default function AddedToCartModal() {
           </div>
           <p className="text-xl text-center">{product?.title}</p>
           <p className="text-xl font-bold text-center mb-6">
-            $ {product?.price}
+            {formatCurrency(product?.price || 0)}
           </p>
           <div className="flex flex-col gap-2 justify-center">
             <Button

@@ -17,7 +17,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { cn } from "@/lib/utils";
+import { cn, formatCurrency } from "@/lib/utils";
 import { ASSETS } from "@/lib/constants";
 
 interface BillingHistoryModalProps {
@@ -122,7 +122,7 @@ export function BillingHistoryModal({
                   </TableCell>
                   <TableCell className="font-light">{record.date}</TableCell>
                   <TableCell className="font-light">
-                    $ {record.amount.toFixed(2)}
+                    {formatCurrency(record.amount)}
                   </TableCell>
                   <TableCell>
                     <div

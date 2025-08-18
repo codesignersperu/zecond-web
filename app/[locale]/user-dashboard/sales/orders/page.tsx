@@ -13,7 +13,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ASSETS } from "@/lib/constants";
-import { cn } from "@/lib/utils";
+import { cn, formatCurrency } from "@/lib/utils";
 import { useGetMyBalance, useGetMySales } from "@/lib/queries/revenue";
 import { PulseLoader } from "react-spinners";
 import { useState } from "react";
@@ -29,11 +29,11 @@ const statusStyles = {
 };
 
 function FormattedCurrency(props: { amount: number }) {
-  let str = props.amount.toFixed(2);
+  let str = formatCurrency(props.amount);
   let [integer, decimal] = str.split(".");
   return (
     <span className="text-3xl sm:text-4xl font-bold">
-      $ {integer}
+      {integer}
       <span className="text-xl">.{decimal}</span>
     </span>
   );
@@ -187,7 +187,7 @@ export default function OrdersPage() {
                       </Link>
                     </TableCell>
                     <TableCell className="text-right">
-                      $ {trx.amount.toFixed(2)}
+                      {formatCurrency(trx.amount)}
                     </TableCell>
                     <TableCell className="text-right">
                       <span

@@ -8,6 +8,7 @@ import {
   DialogContent,
   DialogHeader,
 } from "@/components/ui/dialog";
+import { formatCurrency } from "@/lib/utils";
 
 export default function BidPlacedModal(props: {
   open: boolean;
@@ -57,7 +58,7 @@ export default function BidPlacedModal(props: {
           </DialogHeader>
           <p className="text-xl text-center">{t("common.your-offer")}</p>
           <p className="text-xl font-bold text-center mb-6">
-            ${props.bidAmount}
+            S/ {props.bidAmount}
           </p>
           <time className="text-center block mb-2 max-w-[230px] mx-auto font-semibold">
             {formatDate(new Date())}

@@ -12,7 +12,7 @@ import { useSearchParams } from "next/navigation";
 import { useGlobalStore } from "@/lib/stores";
 import { MoonLoader } from "react-spinners";
 import dayjs from "dayjs";
-import { imageUrl } from "@/lib/utils";
+import { formatCurrency, imageUrl } from "@/lib/utils";
 
 // Mock order data - in a real app, this would come from an API
 const orderData = {
@@ -134,7 +134,7 @@ export default function OrderPlacedPage() {
                     <p className="text-[#898989]">
                       {res.data.orderItems.length} {t("common.articles")}:{" "}
                       <span className="text-black font-medium">
-                        $ {res.data.total}
+                        {formatCurrency(res.data.total)}
                       </span>
                     </p>
                     <p className="text-[#898989]">

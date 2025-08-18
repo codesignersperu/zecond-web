@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import type { AuctionStatus, IProduct } from "@/lib/types";
-import { cn, imageUrl } from "@/lib/utils";
+import { cn, formatCurrency, imageUrl } from "@/lib/utils";
 import { Heart } from "lucide-react";
 import { ChevronUp } from "lucide-react";
 import { useGlobalStore } from "@/lib/stores";
@@ -185,7 +185,7 @@ export default function ProductInfo(props: IProductInfoProps) {
                 <p className="font-semibold text-[#424242]">
                   Oferta mas alta:{" "}
                   <span className="text-xl font-bold ml-1">
-                    ${props.product.bids[0].amount}
+                    {formatCurrency(props.product.bids[0].amount)}
                   </span>
                 </p>
               )}
@@ -383,7 +383,7 @@ function PriceToggleFav(props: {
         ) : (
           ""
         )}{" "}
-        <span>$</span>{" "}
+        <span>S/</span>{" "}
         {(([price, decimal]) => (
           <>
             <span className="text-4xl">{price}</span>

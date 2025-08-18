@@ -17,6 +17,7 @@ import CreateAddressModal from "@/components/common/modals/create-address-modal"
 import { useSubscriptionCheckout } from "@/lib/mutations";
 import { stripePromise } from "@/lib/config";
 import type { SubscriptionPlan } from "@/lib/types";
+import { formatCurrency } from "@/lib/utils";
 
 export default function SubscriptionCheckoutPage() {
   const t = useTranslations();
@@ -109,7 +110,7 @@ export default function SubscriptionCheckoutPage() {
                 <h2>{`${t("common.subscribe-to")} ${planToCheckout.title}`}</h2>
                 <div>
                   <span className="text-3xl font-medium text-gray-900">
-                    ${planToCheckout.price}
+                    {formatCurrency(planToCheckout.price)}
                   </span>
                   <span className="text-gray-600 ml-2 capitalize">
                     {t("common.monthly")}
@@ -283,9 +284,10 @@ const OrderSummary = ({
       <div className="flex justify-between uppercase gap-3">
         <p className="text-sm">
           {t("common.subscription")} {planTitle}
-          <br />${total} {t("common.monthly")}
+          <br />
+          {formatCurrency(total)} {t("common.monthly")}
         </p>
-        <p className="text-xl font-bold">${total.toFixed(2)}</p>
+        <p className="text-xl font-bold">{formatCurrency(total)}</p>
       </div>
     </div>
   );

@@ -9,6 +9,7 @@ import OrderDetailsModal from "@/components/common/modals/order-details-modal";
 import { useState, use } from "react";
 import { useGetOrder } from "@/lib/queries";
 import { MoonLoader } from "react-spinners";
+import { formatCurrency } from "@/lib/utils";
 
 interface OrderDetailsPageProps {
   params: Promise<{
@@ -55,7 +56,7 @@ export default function OrderDetailsPage({ params }: OrderDetailsPageProps) {
                       <ChevronRight className="ml-2 -mt-[6px] h-5 w-5" />
                     </div>
                     <span className="text-xl font-bold">
-                      ${res.data.subTotal.toFixed(2)}
+                      {formatCurrency(res.data.subTotal)}
                     </span>
                   </div>
                 </div>
@@ -129,14 +130,16 @@ export default function OrderDetailsPage({ params }: OrderDetailsPageProps) {
                     <div className="flex justify-between">
                       <span>{t("common.total-items")}</span>
                       <span className="font-medium">
-                        ${res.data.subTotal.toFixed(2)}
+                        {formatCurrency(res.data.subTotal)}
                       </span>
                     </div>
 
                     <div className="flex justify-between">
                       <span>{t("dashboard.my-orders.id.shipping-cost")}</span>
                       <span className="font-medium">
-                        ${res.data.shippingCost || "-"}
+                        {res.data.shippingCost
+                          ? formatCurrency(res.data.shippingCost)
+                          : "-"}
                       </span>
                     </div>
 
@@ -144,9 +147,9 @@ export default function OrderDetailsPage({ params }: OrderDetailsPageProps) {
                       <div className="flex justify-between text-green-500">
                         <span>{t("common.discount")}</span>
                         <span className="font-medium">
-                          - {res.data.discountType === "amount" ? "$" : ""}
+                          - {res.data.discountType === "amount" ? "S/ " : ""}
                           {res.data.discountType === "amount"
-                            ? res.data.discountAmount?.toFixed(2)
+                            ? formatCurrency(res.data.discountAmount || 0)
                             : res.data.discountAmount}
                           {res.data.discountType === "percent" ? "%" : ""}
                         </span>
@@ -157,7 +160,7 @@ export default function OrderDetailsPage({ params }: OrderDetailsPageProps) {
                       <div className="flex justify-between">
                         <span className="text-xl font-bold">Total:</span>
                         <span className="text-xl font-bold">
-                          ${res.data.total.toFixed(2)}
+                          {formatCurrency(res.data.total)}
                         </span>
                       </div>
                     </div>

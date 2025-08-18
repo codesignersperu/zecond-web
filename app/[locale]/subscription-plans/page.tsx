@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn, formatCurrency } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
 import React from "react";
 import { Check } from "lucide-react";
@@ -125,7 +125,7 @@ const PlanCard = ({
         <h3 className="text-lg font-bold text-gray-800 mb-2">{plan.title}</h3>
         <div className="mb-4">
           <span className="text-3xl font-medium text-gray-900">
-            ${plan.price}
+            {formatCurrency(plan.price)}
           </span>
           <span className="text-gray-600 ml-2 capitalize">
             {t("common.monthly")}

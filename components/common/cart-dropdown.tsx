@@ -11,7 +11,7 @@ import { useGetCartItems } from "@/lib/queries";
 import { useModalStore, Modal, useGlobalStore } from "@/lib/stores";
 import toast from "react-hot-toast";
 import { MoonLoader } from "react-spinners";
-import { imageUrl } from "@/lib/utils";
+import { formatCurrency, imageUrl } from "@/lib/utils";
 import { useRemoveFromCart } from "@/lib/mutations";
 import { Lock } from "lucide-react";
 
@@ -110,10 +110,11 @@ export default function CartDropdown() {
                     </div>
                     <div className="flex items-center gap-6">
                       <span className="font-semibold">
-                        ${" "}
-                        {item.product.isAuction
-                          ? item.product.bids[0].amount
-                          : item.product.price}
+                        {formatCurrency(
+                          item.product.isAuction
+                            ? item.product.bids[0].amount
+                            : item.product.price,
+                        )}
                       </span>
                       {!item.expirey ? (
                         <button
@@ -150,7 +151,9 @@ export default function CartDropdown() {
               <div className="w-[75%] h-[1px] bg-[#E7E7E7] mx-auto"></div>
               <div className="flex items-center justify-between pt-4 !mt-0">
                 <span className="font-semibold text-lg">Total:</span>
-                <span className="font-semibold text-lg">$ {total}</span>
+                <span className="font-semibold text-lg">
+                  {formatCurrency(total)}
+                </span>
               </div>
               {/* Actions */}
               <div className="flex gap-4">

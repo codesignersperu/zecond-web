@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ASSETS } from "@/lib/constants";
-import { imageUrl } from "@/lib/utils";
+import { formatCurrency, imageUrl } from "@/lib/utils";
 import { Modal, useModalStore } from "@/lib/stores";
 import dayjs from "dayjs";
 
@@ -79,7 +79,7 @@ export default function AuctionItModal() {
           <div className="space-y-1 flex flex-col px-4 py-2 sm:p-4 rounded-xl border border-[#bfbfbf] bg-white">
             <p className="text-[#898989]">{t("common.base-price")}</p>
             <p className="sm:w-auto text-2xl font-bold focus:outline-none">
-              ${data?.product?.price}
+              {formatCurrency(data?.product?.price || 0)}
             </p>
           </div>
 

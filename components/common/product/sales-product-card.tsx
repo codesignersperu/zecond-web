@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { imageUrl, cn } from "@/lib/utils";
+import { imageUrl, cn, formatCurrency } from "@/lib/utils";
 import { ASSETS } from "@/lib/constants";
 import Countdown from "react-countdown";
 import { Ellipsis } from "lucide-react";
@@ -110,7 +110,7 @@ export default function SalesProductCard({
           <div>
             <h3 className="text-[#7e7e7e] text-sm">{title}</h3>
             <div className="flex justify-between items-center">
-              <p className="text-sm font-bold">${price}</p>
+              <p className="text-sm font-bold">{formatCurrency(price)}</p>
               {/* 3 dots menu */}
               <div
                 className="flex sm:hidden justify-center items-center p-[2px] rounded-full bg-[#f4f4f4] cursor-pointer text-neutral-500"
@@ -162,7 +162,7 @@ export default function SalesProductCard({
                 <p>
                   {t("auctions.highest-bid")}:{" "}
                   <span className="font-bold">
-                    ${bids[0].amount.toFixed(2)}
+                    {formatCurrency(bids[0].amount)}
                   </span>
                 </p>
               )}

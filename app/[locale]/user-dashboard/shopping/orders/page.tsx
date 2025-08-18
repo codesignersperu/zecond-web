@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useGetOrders } from "@/lib/queries";
 import { PulseLoader } from "react-spinners";
 import dayjs from "dayjs";
-import { imageUrl } from "@/lib/utils";
+import { formatCurrency, imageUrl } from "@/lib/utils";
 import { OrderInResonse } from "@/lib/types";
 import { useRouter } from "next/navigation";
 
@@ -150,7 +150,7 @@ export default function MyOrders() {
                   <p className="text-sm text-gray-500">
                     {order.orderItems.length} {t("common.articles")}:
                   </p>
-                  <p className="font-semibold">${order.total}</p>
+                  <p className="font-semibold">{formatCurrency(order.total)}</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <p className="text-sm text-gray-500">

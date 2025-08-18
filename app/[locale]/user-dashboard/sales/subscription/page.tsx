@@ -25,7 +25,7 @@ export default function SubscriptionPage() {
             <div>
               <h3 className="text-xl uppercase font-medium">
                 {t("dashboard.subscription.closet-plan", { noOfItems: 20 })}{" "}
-                <span className="font-bold normal-case">$5.00</span>
+                <span className="font-bold normal-case">S/ 5.00</span>
               </h3>
             </div>
             <div className="space-y-1">

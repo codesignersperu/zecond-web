@@ -14,7 +14,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, FreeMode } from "swiper/modules";
 import { Search } from "lucide-react";
 import { useModalStore, Modal, useGlobalStore } from "@/lib/stores";
-import { imageUrl, cn } from "@/lib/utils";
+import { imageUrl, cn, formatCurrency } from "@/lib/utils";
 import { useGetProduct, useGetProducts } from "@/lib/queries";
 import { PulseLoader } from "react-spinners";
 import type {
@@ -351,7 +351,7 @@ export default function Header(props: IHeader) {
                           <p className="font-semibold text-[#454545]">
                             {t("auctions.highest-bid")}:{" "}
                             <span className="font-bold text-black text-xl ml-1">
-                              ${highestBid.toFixed(2)}
+                              {formatCurrency(highestBid)}
                             </span>
                           </p>
                         )}
@@ -373,7 +373,7 @@ export default function Header(props: IHeader) {
                               <p className="text-sm font-semibold text-[#454545] sm:hidden">
                                 {t("auctions.highest-bid")}:{" "}
                                 <span className="font-bold text-base text-black">
-                                  ${highestBid.toFixed(2)}{" "}
+                                  {formatCurrency(highestBid)}
                                 </span>
                               </p>
                             )}
@@ -383,7 +383,7 @@ export default function Header(props: IHeader) {
                             className="relative rounded-full bg-white h-14 flex justify-center items-center border-2 border-neutral-500 focus-within:border-blue-500"
                           >
                             <span className="absolute left-8 top-1/2 text-xl font-semibold -translate-y-1/2">
-                              $
+                              S/
                             </span>
                             <AutoWidthInput
                               type="number"

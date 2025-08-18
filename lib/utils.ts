@@ -52,3 +52,12 @@ export function generateQueryParams(
 export function formatAccountNumber(accountNumber: string): string {
   return `${accountNumber.slice(0, 3)} ${accountNumber.slice(3, 12)} ${accountNumber.slice(12)}`;
 }
+
+export function formatCurrency(value: number): string {
+  return new Intl.NumberFormat("es-PE", {
+    style: "currency",
+    currency: "PEN",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(value);
+}

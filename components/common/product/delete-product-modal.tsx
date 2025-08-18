@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ASSETS } from "@/lib/constants";
 import type { IProduct } from "@/lib/types";
-import { imageUrl } from "@/lib/utils";
+import { formatCurrency, imageUrl } from "@/lib/utils";
 
 interface DeleteProductProps {
   isOpen: boolean;
@@ -61,7 +61,7 @@ export default function DeleteProductModal({
               {product?.title || ""}
             </h3>
             <p className="text-xl font-bold text-center">
-              ${product?.price || "0.00"}
+              {formatCurrency(product?.price || 0)}
             </p>
           </div>
 

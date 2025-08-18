@@ -10,7 +10,7 @@ import Countdown from "react-countdown";
 import { useGetProducts } from "@/lib/queries";
 import { PulseLoader } from "react-spinners";
 import { AuctionStatus, ProductsResponse } from "@/lib/types";
-import { imageUrl } from "@/lib/utils";
+import { formatCurrency, imageUrl } from "@/lib/utils";
 import { useMemo, useState } from "react";
 import dayjs from "dayjs";
 
@@ -150,7 +150,7 @@ function Slide(props: { product: ProductsResponse }) {
       {/* Product Info */}
       <div className="text-white">
         <div className="text-2xl text-center sm:text-left font-bold mb-[6px]">
-          $ {props.product.price.toFixed(2)}
+          {formatCurrency(props.product.price)}
           <span className="text-2xl">.+</span>
         </div>
 
@@ -159,7 +159,7 @@ function Slide(props: { product: ProductsResponse }) {
         </h2>
 
         <div className="hidden sm:bottom-0 text-4xl font-bold mb:6">
-          $ {props.product.price.toFixed(2)}
+          {formatCurrency(props.product.price)}
           <span className="text-2xl">.+</span>
         </div>
 
@@ -190,7 +190,7 @@ function Slide(props: { product: ProductsResponse }) {
             <p className="text-center sm:text-left text-gray-300">
               {t("auctions.highest-bid")}:{" "}
               <span className="text-white font-bold">
-                $ {props.product.bids[0].amount.toFixed(2)}
+                {formatCurrency(props.product.bids[0].amount)}
               </span>
             </p>
           )}

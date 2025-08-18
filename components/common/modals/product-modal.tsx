@@ -13,7 +13,7 @@ import { Navigation, Pagination, FreeMode } from "swiper/modules";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import { cn, imageUrl } from "@/lib/utils";
+import { cn, formatCurrency, imageUrl } from "@/lib/utils";
 import { ASSETS } from "@/lib/constants";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Countdown from "react-countdown";
@@ -383,7 +383,7 @@ export default function ProductModal() {
                                   <p className="font-semibold text-[#424242] text-nowrap">
                                     {t("auctions.highest-bid")}:{" "}
                                     <span className="font-bold text-2xl ml-1">
-                                      ${highestBid.toFixed(2)}
+                                      {formatCurrency(highestBid)}
                                     </span>
                                   </p>
                                 )}
@@ -404,7 +404,7 @@ export default function ProductModal() {
                                       className="relative rounded-full bg-white h-14 flex justify-center items-center border-2 border-neutral-500 focus-within:border-blue-500"
                                     >
                                       <span className="absolute left-8 top-1/2 text-xl font-semibold -translate-y-1/2">
-                                        $
+                                        S/
                                       </span>
                                       <AutoWidthInput
                                         id="offer-bid-input"
@@ -593,7 +593,7 @@ export default function ProductModal() {
                               <p className="text-[#424242]">
                                 {t("auctions.highest-bid")}:{" "}
                                 <span className="font-bold">
-                                  ${highestBid.toFixed(2)}
+                                  {formatCurrency(highestBid)}
                                 </span>
                               </p>
                             )}
@@ -610,7 +610,7 @@ export default function ProductModal() {
                                   className="relative rounded-full bg-white h-14 flex justify-center items-center border-2 border-neutral-500 focus-within:border-blue-500"
                                 >
                                   <span className="absolute left-8 top-1/2 text-xl font-semibold -translate-y-1/2">
-                                    $
+                                    S/
                                   </span>
                                   <AutoWidthInput
                                     id="offer-bid-input-drawer"
