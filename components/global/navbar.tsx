@@ -40,7 +40,7 @@ export default function Navbar() {
   return (
     <>
       <div id="scroll-top">
-        <div className="container mx-auto px-8 sm:px-4 py-3 sm:py-4 flex justify-between items-center">
+        <div className="container xl:max-w-7xl mx-auto px-8 sm:px-4 py-5 flex justify-between items-center">
           {/* Logo */}
           <div className="w-auto flex items-center justify-start gap-4">
             <Link href="/" className="flex justify-center items-center">
@@ -87,8 +87,8 @@ function BottomNav({ navItems }: { navItems: INavItem[] }) {
   const t = useTranslations("navigation");
   const router = useRouter();
   return (
-    <nav className="hidden md:block bg-black text-white py-4 lg:py-2">
-      <div className="container mx-auto px-4">
+    <nav className="hidden md:block bg-[#333] text-white py-4 lg:py-2">
+      <div className="container xl:max-w-7xl mx-auto px-4">
         <div className="flex flex-col-reverse min-[530px]:flex-row items-center justify-center gap-4 min-[530px]:justify-between">
           <ul className="flex flex-wrap max-[530px]:justify-center lg:items-center gap-y-2 gap-x-6 xl:gap-x-8">
             {navItems.map((item) => (
@@ -112,7 +112,7 @@ function BottomNav({ navItems }: { navItems: INavItem[] }) {
             ))}
           </ul>
           <Button
-            className="min-[530px]:ml-auto max-w-[75%] bg-black text-white border border-white rounded-full px-6 py-2 font-medium flex items-center gap-2"
+            className="min-[530px]:ml-auto max-w-[75%] bg-[#333] text-white border border-white rounded-full px-6 py-2 font-medium flex items-center gap-2"
             onClick={() => router.push("/subscription-plans")}
           >
             <Image

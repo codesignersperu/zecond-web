@@ -124,7 +124,7 @@ export default function Header(props: IHeader) {
 
   return (
     <>
-      <div className="mx-auto sm:px-4 pt-14 pb-20 bg-[#f3f3f3]">
+      <div className="mx-auto sm:px-4 sm:pt-14 pb-20 bg-[#f3f3f3]">
         {productLoading ? (
           <div className="flex justify-center items-center h-[600px]">
             <PulseLoader color="#d9d9d9" />
@@ -156,7 +156,7 @@ export default function Header(props: IHeader) {
                       <img
                         src={imageUrl(image.url) || "/placeholder.svg"}
                         alt={product.data.title}
-                        className="flex-1 w-[615px] rounded-3xl !aspect-[4/5] object-cover object-bottom"
+                        className="flex-1 w-[615px] sm:rounded-3xl !aspect-[4/5] object-cover object-bottom"
                       />
                     </SwiperSlide>
                   ))}

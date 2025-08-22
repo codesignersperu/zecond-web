@@ -12,7 +12,7 @@ import { PulseLoader } from "react-spinners";
 import { cn } from "@/lib/utils";
 
 export default function Influencers() {
-  const t = useTranslations("common");
+  const t = useTranslations();
   const isMobile = useMediaQuery("(max-width: 640px)");
   const {
     data: res,
@@ -25,12 +25,14 @@ export default function Influencers() {
     <section className="py-12 sm:py-32 relative bg-[#F8F8F8]">
       <div className="max-w-7xl mx-auto">
         <div className="flex px-8 justify-between items-center mb-8">
-          <h2 className="text-2xl font-bold text-[#424242]">Influencers</h2>
+          <h2 className="text-2xl font-bold text-[#424242] capitalize">
+            {t("navigation.influencers")}
+          </h2>
           <Link
             href="influencers"
             className="text-[#989898] hover:text-[#424242] transition-colors"
           >
-            {t("see-more")}
+            {t("common.see-more")}
           </Link>
         </div>
 
@@ -52,7 +54,7 @@ export default function Influencers() {
           isSuccess &&
           (!res.data.influencers.length ? (
             <div className="flex justify-center items-center h-[500px] text-muted-foreground">
-              {t("no-influencers-atm")}
+              {t("common.no-influencers-atm")}
             </div>
           ) : isMobile ? (
             <div className="flex overflow-x-auto gap-3 no-scrollbar">
