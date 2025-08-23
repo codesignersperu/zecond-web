@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="bg-[#111111] text-white py-16">
       <div className="container mx-auto px-4">
         {/* Logo and Description */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div className="px-[8%] sm:px-0 flex flex-col items-center text-center mb-16">
           <Image
             src={ASSETS["zecond-logo-white.png"]}
             alt="ZECOND CLOSET SALE"
@@ -23,7 +23,7 @@ export default function Footer() {
         {/* Footer Links */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {/* ZECOND Column */}
-          {/* <div>
+          <div>
             <h3 className="font-bold mb-4 uppercase">{t("second.second")}</h3>
             <ul className="space-y-2 text-[#A4A4A4]">
               <li>
@@ -47,10 +47,10 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div> */}
+          </div>
 
           {/* DESCUBRE Column */}
-          {/* <div>
+          <div>
             <h3 className="font-bold uppercase mb-4">
               {t("discover.discover")}
             </h3>
@@ -76,10 +76,10 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div> */}
+          </div>
 
           {/* AYUDA Y SOPORTE Column */}
-          {/* <div>
+          <div>
             <h3 className="font-bold uppercase mb-4">{t("help.help")}</h3>
             <ul className="space-y-2 text-[#A4A4A4]">
               <li>
@@ -103,10 +103,10 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div> */}
+          </div>
 
           {/* LEGAL Column */}
-          {/* <div>
+          <div>
             <h3 className="font-bold mb-4 uppercase">{t("legal.legal")}</h3>
             <ul className="space-y-2 text-[#A4A4A4]">
               <li>
@@ -125,7 +125,7 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div> */}
+          </div>
         </div>
 
         {/* Social and App Store Links  */}
