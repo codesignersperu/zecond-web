@@ -9,9 +9,9 @@ export default function LandingPage() {
   return (
     <main className="flex flex-col min-h-screen">
       <Header />
-      <Influencers />
+      {/*<Influencers />*/}
       <NewArrivals />
-      <Categories />
+      {/*<Categories />*/}
       <Luxury />
       <Auction />
     </main>
