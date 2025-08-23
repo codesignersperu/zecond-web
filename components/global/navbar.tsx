@@ -8,7 +8,7 @@ import { ASSETS } from "@/lib/constants";
 import CartDropdown from "@/components/common/cart-dropdown";
 import UserProfile from "@/components/common/user-profile";
 import ProductSearch from "@/components/common/product/product-search";
-import MenuDrawer from "@/components/common/menu-drawer";
+import MenuDrawer from "@/components/global/menu-drawer";
 import LeftSidebar from "@/components/common/left-sidebar";
 import { useRouter } from "next/navigation";
 
