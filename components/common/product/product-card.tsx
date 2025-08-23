@@ -242,7 +242,7 @@ export default function ProductCard(props: iProductCardProps) {
               </span>
             </div>
 
-            <button
+            {/*<button
               className={cn(
                 "w-10 h-10 rounded-full bg-[#D9D9D9] group-hover:bg-[#E4F6D9] flex items-center justify-center",
                 props.hideCartIcon && "hidden",
@@ -256,7 +256,7 @@ export default function ProductCard(props: iProductCardProps) {
                 width={20}
                 height={20}
               />
-            </button>
+            </button>*/}
           </div>
         </div>
         <div className="text-[#1374aa] capitalize text-sm">
