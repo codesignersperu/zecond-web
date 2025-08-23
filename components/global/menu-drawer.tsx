@@ -8,7 +8,6 @@ import Image from "next/image";
 import { ASSETS } from "@/lib/constants";
 import { Facebook } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 
 interface IMenuDrawerProps {
   navItems: {
@@ -59,7 +58,11 @@ export default function MenuDrawer({ navItems }: IMenuDrawerProps) {
         <DrawerContent className="p-5 border-none bg-[#0e0e0e] space-y-6">
           {/* Create Closet Button */}
           <div className="flex">
-            <Button className="w-full bg-black text-white border border-white rounded-full px-6 py-2 font-medium flex items-center gap-2">
+            <Link
+              href={"/subscription-plans"}
+              className="w-full flex justify-center items-center gap-2 bg-[#0e0e0e] text-white border border-white rounded-full px-6 py-2 font-medium"
+              onClick={() => setDrawerOpen(false)}
+            >
               <Image
                 src={ASSETS["plus-white.svg"] || "/placeholder.svg"}
                 alt="User"
@@ -69,7 +72,7 @@ export default function MenuDrawer({ navItems }: IMenuDrawerProps) {
                 priority
               />
               {t("navigation.sell-now")}
-            </Button>
+            </Link>
           </div>
           {/* Links */}
           <ul className="flex flex-wrap gap-y-3 gap-x-2">
