@@ -87,6 +87,13 @@ export default function LoginSignupModal() {
   type SignupFormData = z.infer<typeof signupFormSchema>;
   const signupForm = useForm<SignupFormData>({
     resolver: zodResolver(signupFormSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
   });
 
   useEffect(() => {
@@ -165,7 +172,7 @@ export default function LoginSignupModal() {
         </DialogHeader>
 
         {mode === "login" ? (
-          <Form {...loginForm}>
+          <Form {...loginForm} key={"modal-login-form"}>
             <form
               className="mt-4 sm:mt-6 space-y-3 sm:space-y-4"
               onSubmit={loginForm.handleSubmit(onSubmit)}
@@ -232,7 +239,7 @@ export default function LoginSignupModal() {
             </form>
           </Form>
         ) : (
-          <Form {...signupForm}>
+          <Form {...signupForm} key={"modal-signup-form"}>
             <form
               className="mt-4 sm:mt-6 space-y-3 sm:space-y-4"
               onSubmit={signupForm.handleSubmit(onSubmit)}
