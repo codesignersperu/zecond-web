@@ -240,7 +240,7 @@ export default function ProductsPage() {
       ) : (
         !!categories && (
           <>
-            <div className="flex md:hidden justify-center flex-wrap gap-4 px-3 overflow-x-auto no-scrollbar sm:gap-8 mx-auto mb-5 sm:mb-8">
+            <div className="flex md:hidden gap-4 px-3 overflow-x-auto no-scrollbar sm:gap-8 mx-auto mb-5 sm:mb-8">
               {Object.keys(categories).map((category) => (
                 <div
                   key={category}
@@ -266,7 +266,7 @@ export default function ProductsPage() {
             </div>
 
             {/* Subcategories */}
-            <div className="max-w-3xl mx-auto px-5 relative mb-6 sm:mb-8">
+            <div className="max-w-3xl mx-auto px-5 relative sm:mb-8">
               {((category, subcategories) => (
                 <>
                   {/* Left Arrow */}
@@ -349,14 +349,14 @@ export default function ProductsPage() {
         )
       )}
 
-      <div className="flex flex-wrap min-[450px]:flex-nowrap gap-1 sm:gap-4 w-fit mx-auto mb-8">
+      <div className="flex sm:justify-center gap-2 overflow-x-auto sm:gap-4 mx-auto mb-3 sm:mb-6 py-1 no-scrollbar">
         {/* Sort */}
         <Select
           onValueChange={(v) => setSelectedSort(v as any)}
           name={"sort"}
           value={`${selectedSort}`}
         >
-          <SelectTrigger className="rounded-full bg-[#F5F5F5] border-0 text-[#424242] px-4 sm:px-6 gap-1 sm:py-2">
+          <SelectTrigger className="rounded-full min-w-fit max-w-fit bg-[#F5F5F5] border-0 text-[#424242] px-4 sm:px-6 gap-1 sm:py-2">
             <SelectValue placeholder={t("products.filters.sort-by")} />
           </SelectTrigger>
           <SelectContent>
@@ -375,7 +375,7 @@ export default function ProductsPage() {
           name={"size"}
           value={`${selectedSize}`}
         >
-          <SelectTrigger className="rounded-full bg-[#F5F5F5] border-0 text-[#424242] px-4 sm:px-6 gap-1 sm:py-2">
+          <SelectTrigger className="rounded-full min-w-fit max-w-fit bg-[#F5F5F5] border-0 text-[#424242] px-4 sm:px-6 gap-1 sm:py-2">
             <SelectValue placeholder={t("products.filters.size")} />
           </SelectTrigger>
           <SelectContent>
@@ -394,7 +394,7 @@ export default function ProductsPage() {
           name={"color"}
           value={`${selectedColor}`}
         >
-          <SelectTrigger className="rounded-full bg-[#F5F5F5] border-0 text-[#424242] px-4 sm:px-6 gap-1 sm:py-2">
+          <SelectTrigger className="rounded-full min-w-fit max-w-fit bg-[#F5F5F5] border-0 text-[#424242] px-4 sm:px-6 gap-1 sm:py-2">
             <SelectValue placeholder={t("products.filters.color")} />
           </SelectTrigger>
           <SelectContent>
@@ -413,7 +413,7 @@ export default function ProductsPage() {
           name={"brand"}
           value={`${selectedBrand}`}
         >
-          <SelectTrigger className="rounded-full bg-[#F5F5F5] border-0 text-[#424242] px-4 sm:px-6 gap-1 sm:py-2">
+          <SelectTrigger className="rounded-full min-w-fit max-w-fit bg-[#F5F5F5] border-0 text-[#424242] px-4 sm:px-6 gap-1 sm:py-2">
             <SelectValue placeholder={t("products.filters.brand")} />
           </SelectTrigger>
           <SelectContent>
