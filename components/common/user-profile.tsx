@@ -100,7 +100,7 @@ export default function UserProfile() {
             src={
               user
                 ? imageUrl(user.avatarUrl) || ASSETS["user-1.svg"]
-                : ASSETS["placeholder-profile-pic.png"]
+                : ASSETS["profile-icon-black.png"]
             }
             alt="User"
             width={40}

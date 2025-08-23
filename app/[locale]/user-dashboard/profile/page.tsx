@@ -92,9 +92,7 @@ export default function ProfilePage() {
         <div className="flex items-center gap-6">
           <div className="relative">
             <Image
-              src={
-                user ? user.avatarUrl : ASSETS["placeholder-profile-pic.png"]
-              }
+              src={user ? user.avatarUrl : ASSETS["profile-icon-black.png"]}
               alt="Profile Picture"
               width={135}
               height={135}

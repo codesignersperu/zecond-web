@@ -27,7 +27,7 @@ export default function LeftSidebar() {
               src={
                 user
                   ? imageUrl(user.avatarUrl)
-                  : ASSETS["placeholder-profile-pic.png"]
+                  : ASSETS["profile-icon-black.png"]
               }
               alt="User"
               width={40}
@@ -73,7 +73,7 @@ export default function LeftSidebar() {
               src={
                 user
                   ? imageUrl(user.avatarUrl)
-                  : ASSETS["placeholder-profile-pic.png"]
+                  : ASSETS["profile-icon-black.png"]
               }
               alt="User"
               width={100}

@@ -57,6 +57,7 @@ export const ASSETS = {
   "plus-white.svg": "/plus-white.svg",
   "polos.svg": "/polos.svg",
   "print-white.svg": "/print-white.svg",
+  "profile-icon-black.png": "/profile-icon-black.png",
   "search-black.svg": "/search-black.svg",
   "search-white.svg": "/search-white.svg",
   "shoes.svg": "/shoes.svg",
