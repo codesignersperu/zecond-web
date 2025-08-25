@@ -1,7 +1,7 @@
 "use client";
 
 import { cn, formatCurrency } from "@/lib/utils";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import React from "react";
 import { Check } from "lucide-react";
 import Link from "next/link";

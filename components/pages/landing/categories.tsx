@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { ASSETS } from "@/lib/constants";
 
@@ -30,7 +30,6 @@ const categories = [
 
 export default function CategoriesSection() {
   const t = useTranslations();
-  const locale = useLocale();
 
   return (
     <section className="py-8 sm:py-12 px-4 bg-[#F8F8F8]">
@@ -54,7 +53,7 @@ export default function CategoriesSection() {
           {categories.map((category) => (
             <Link
               key={category.name}
-              href={locale + category.url}
+              href={category.url}
               className="bg-white rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col min-[460px]:flex-row items-center gap-4 p-4 hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-shadow"
             >
               <div className="w-16 h-16 relative flex-shrink-0">

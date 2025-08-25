@@ -22,7 +22,7 @@ import { useModalStore, Modal } from "@/lib/stores";
 import { useGetProducts } from "@/lib/queries";
 import { MoonLoader } from "react-spinners";
 import { AuctionStatus, HttpResponse, IProduct } from "@/lib/types";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import dayjs from "dayjs";
 import Link from "next/link";
@@ -41,7 +41,6 @@ export default function ProductModal() {
   const bid = useBidOnAuction();
   const t = useTranslations();
   const router = useRouter();
-  const locale = useLocale();
   const loginPass = useLoginPass();
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
@@ -302,7 +301,7 @@ export default function ProductModal() {
 
                               <div className="grid grid-cols-2 gap-4">
                                 <Link
-                                  href={locale + "/products/" + product.id}
+                                  href={"/products/" + product.id}
                                   onClick={closeModal}
                                 >
                                   <Button
@@ -313,7 +312,7 @@ export default function ProductModal() {
                                   </Button>
                                 </Link>
                                 <Link
-                                  href={locale + "/checkout?ids=" + product.id}
+                                  href={"/checkout?ids=" + product.id}
                                   onClick={closeModal}
                                 >
                                   <Button className="w-full h-12 text-lg rounded-full bg-black hover:bg-black/90 text-white">
@@ -514,7 +513,7 @@ export default function ProductModal() {
 
                           <div className="grid grid-cols-2 gap-4">
                             <Link
-                              href={locale + "/products/" + product.id}
+                              href={"/products/" + product.id}
                               onClick={closeModal}
                               className="block"
                             >
@@ -526,7 +525,7 @@ export default function ProductModal() {
                               </Button>
                             </Link>
                             <Link
-                              href={locale + "/checkout?ids=" + product.id}
+                              href={"/checkout?ids=" + product.id}
                               onClick={closeModal}
                               className="block"
                             >

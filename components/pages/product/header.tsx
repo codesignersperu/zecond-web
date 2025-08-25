@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -49,7 +49,6 @@ export default function Header(props: IHeader) {
   const bid = useBidOnAuction();
   const { user } = useGlobalStore();
   const loginPass = useLoginPass();
-  const locale = useLocale();
 
   const {
     data: product,
@@ -242,7 +241,7 @@ export default function Header(props: IHeader) {
                       >
                         {t("product.add-to-cart")}
                       </Button>
-                      <Link href={locale + "/checkout?ids=" + product.data.id}>
+                      <Link href={"/checkout?ids=" + product.data.id}>
                         <Button className="w-full uppercase rounded-full h-14 bg-black hover:bg-black/90 text-white">
                           {t("product.buy-now")}
                         </Button>
@@ -252,9 +251,7 @@ export default function Header(props: IHeader) {
                     {product.data.seller.isInfluencer && (
                       <Link
                         href={
-                          locale +
-                          "/featured-sellers/" +
-                          product.data.seller.username
+                          "/featured-sellers/" + product.data.seller.username
                         }
                       >
                         <Button
@@ -289,7 +286,7 @@ export default function Header(props: IHeader) {
                       {t("common.add")}
                     </Button>
                     <Link
-                      href={locale + "/checkout?ids=" + props.productId}
+                      href={"/checkout?ids=" + props.productId}
                       className="flex-1"
                     >
                       <Button className="w-full flex-1 rounded-full h-12 min-[400px]:h-14 text-sm min-[400px]:text-base bg-black hover:bg-black/90 flex items-center justify-center uppercase">

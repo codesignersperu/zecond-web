@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -97,7 +97,6 @@ export default function FeaturedAuctionsSlider() {
 
 function Slide(props: { product: ProductsResponse }) {
   const t = useTranslations();
-  const locale = useLocale();
 
   const [recalcStatus, setRecalcStatus] = useState(false);
   const auctionStatus: AuctionStatus | null = useMemo(() => {
@@ -198,7 +197,7 @@ function Slide(props: { product: ProductsResponse }) {
 
         {auctionStatus === "started" && (
           <Link
-            href={locale + `/products/` + props.product.id}
+            href={`/products/` + props.product.id}
             className="w-full inline-flex gap-3 uppercase justify-center sm:justify-start text-[#40C98E]"
           >
             {t("auctions.bid-now")}

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import {
   Dialog,
   DialogClose,
@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button";
 import { ASSETS } from "@/lib/constants";
 import { useModalStore, Modal } from "@/lib/stores";
 import { formatCurrency, imageUrl } from "@/lib/utils";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function AuctionWonModal() {
@@ -20,8 +19,6 @@ export default function AuctionWonModal() {
     closeModal,
     auctionWonModalData: data,
   } = useModalStore();
-  const router = useRouter();
-  const locale = useLocale();
 
   return (
     <Dialog
@@ -73,7 +70,7 @@ export default function AuctionWonModal() {
             {formatCurrency(data?.amount || 0)}
           </p>
           <div className="flex flex-col gap-2 justify-center">
-            <Link href={`/${locale}/cart`} scroll>
+            <Link href={`/cart`} scroll>
               <Button
                 className="bg-neutral-200 w-full hover:bg-neutral-200/50 text-black rounded-full h-12 flex items-center justify-center uppercase"
                 onClick={closeModal}
@@ -81,7 +78,7 @@ export default function AuctionWonModal() {
                 {t("cart-dropdown.view-cart")}
               </Button>
             </Link>
-            <Link href={`/${locale}/checkout?ids=`} scroll>
+            <Link href={`/checkout?ids=`} scroll>
               <Button
                 className="rounded-full w-full h-12 bg-[#39ab75] hover:bg-[#39ab75]/90 flex items-center justify-center uppercase"
                 onClick={closeModal}

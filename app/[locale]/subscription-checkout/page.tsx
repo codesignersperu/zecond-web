@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -23,7 +23,6 @@ export default function SubscriptionCheckoutPage() {
   const t = useTranslations();
   const params = useSearchParams();
   const router = useRouter();
-  const locale = useLocale();
   const { openModal } = useModalStore();
   const { user } = useGlobalStore();
   const {
@@ -91,7 +90,7 @@ export default function SubscriptionCheckoutPage() {
             <p className="text-red-500">
               {t("common.you-are-already-subscribed-to-this-plan")}
             </p>
-            <Button onClick={() => router.push(locale + "/subscription-plans")}>
+            <Button onClick={() => router.push("/subscription-plans")}>
               {t("common.upgrade-your-plan")}
             </Button>
           </div>
