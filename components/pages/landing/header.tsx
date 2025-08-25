@@ -67,12 +67,12 @@ export default function Header() {
           {headerSlides.map(([img, link], index) => (
             <SwiperSlide
               key={img + index}
-              className="p-3 sm:p-0 cursor-pointer"
+              className="cursor-pointer"
               onClick={() => router.push(link)}
             >
               <img
                 src={imageUrl(img)}
-                className="rounded-[20px] w-full sm:rounded-none sm:object-cover object-center"
+                className="w-full sm:object-cover object-center"
               />
             </SwiperSlide>
           ))}
