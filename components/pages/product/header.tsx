@@ -33,6 +33,7 @@ import AutoWidthInput from "@/components/common/auto-width-input";
 import { useBidSocket } from "@/lib/hooks";
 import { useLoginPass } from "@/lib/hooks";
 import BidPlacedModal from "@/components/common/modals/bid-placed-modal";
+import { useRouter } from "next/navigation";
 
 interface IHeader {
   productId: string;
@@ -49,6 +50,7 @@ export default function Header(props: IHeader) {
   const bid = useBidOnAuction();
   const { user } = useGlobalStore();
   const loginPass = useLoginPass();
+  const router = useRouter();
 
   const {
     data: product,
@@ -101,6 +103,12 @@ export default function Header(props: IHeader) {
         },
       });
     }
+  }
+
+  async function onCheckout(productId: number) {
+    const pass = await loginPass();
+    if (!pass) return;
+    router.push("/checkout?ids=" + productId);
   }
 
   const { totalBids, highestBid, price, handlePriceChange } = useBidSocket({
@@ -241,11 +249,12 @@ export default function Header(props: IHeader) {
                       >
                         {t("product.add-to-cart")}
                       </Button>
-                      <Link href={"/checkout?ids=" + product.data.id}>
-                        <Button className="w-full uppercase rounded-full h-14 bg-black hover:bg-black/90 text-white">
-                          {t("product.buy-now")}
-                        </Button>
-                      </Link>
+                      <Button
+                        className="w-full uppercase rounded-full h-14 bg-black hover:bg-black/90 text-white"
+                        onClick={() => onCheckout(product.data.id)}
+                      >
+                        {t("product.buy-now")}
+                      </Button>
                     </div>
 
                     {product.data.seller.isInfluencer && (
@@ -285,24 +294,21 @@ export default function Header(props: IHeader) {
                       />
                       {t("common.add")}
                     </Button>
-                    <Link
-                      href={"/checkout?ids=" + props.productId}
-                      className="flex-1"
+                    <Button
+                      className="w-full flex-1 rounded-full h-12 min-[400px]:h-14 text-sm min-[400px]:text-base bg-black hover:bg-black/90 flex items-center justify-center uppercase"
+                      onClick={() => onCheckout(product.data.id)}
                     >
-                      <Button className="w-full flex-1 rounded-full h-12 min-[400px]:h-14 text-sm min-[400px]:text-base bg-black hover:bg-black/90 flex items-center justify-center uppercase">
-                        <Image
-                          src={
-                            ASSETS["credit-card-white.svg"] ||
-                            "/placeholder.svg"
-                          }
-                          alt="Credit Card"
-                          width={24}
-                          height={24}
-                          className="size-5 min-[400px]:size-6 min-[400px]:mr-2"
-                        />
-                        {t("cart-dropdown.checkout")}
-                      </Button>
-                    </Link>
+                      <Image
+                        src={
+                          ASSETS["credit-card-white.svg"] || "/placeholder.svg"
+                        }
+                        alt="Credit Card"
+                        width={24}
+                        height={24}
+                        className="size-5 min-[400px]:size-6 min-[400px]:mr-2"
+                      />
+                      {t("cart-dropdown.checkout")}
+                    </Button>
                   </div>
                 </div>
               ) : (

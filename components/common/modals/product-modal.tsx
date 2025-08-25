@@ -87,6 +87,13 @@ export default function ProductModal() {
       : undefined,
   });
 
+  async function onCheckout(productId: number) {
+    const pass = await loginPass();
+    if (!pass) return;
+    router.push("/checkout?ids=" + productId);
+    closeModal();
+  }
+
   async function onBid() {
     const product = products?.data?.products.length
       ? products.data.products[currentProductIndex]
@@ -311,23 +318,21 @@ export default function ProductModal() {
                                     {t("common.see-more")}
                                   </Button>
                                 </Link>
-                                <Link
-                                  href={"/checkout?ids=" + product.id}
-                                  onClick={closeModal}
+                                <Button
+                                  className="w-full h-12 text-lg rounded-full bg-black hover:bg-black/90 text-white"
+                                  onClick={() => onCheckout(product.id)}
                                 >
-                                  <Button className="w-full h-12 text-lg rounded-full bg-black hover:bg-black/90 text-white">
-                                    <Image
-                                      src={
-                                        ASSETS["credit-card-white.svg"] ||
-                                        "/placeholder.svg"
-                                      }
-                                      width={30}
-                                      height={30}
-                                      alt="Credit Card"
-                                    />
-                                    {t("cart-dropdown.checkout")}
-                                  </Button>
-                                </Link>
+                                  <Image
+                                    src={
+                                      ASSETS["credit-card-white.svg"] ||
+                                      "/placeholder.svg"
+                                    }
+                                    width={30}
+                                    height={30}
+                                    alt="Credit Card"
+                                  />
+                                  {t("cart-dropdown.checkout")}
+                                </Button>
                               </div>
                             </div>
                           </div>
@@ -524,24 +529,21 @@ export default function ProductModal() {
                                 {t("common.see-more")}
                               </Button>
                             </Link>
-                            <Link
-                              href={"/checkout?ids=" + product.id}
-                              onClick={closeModal}
-                              className="block"
+                            <Button
+                              className="block h-12 w-full uppercase text-lg rounded-full bg-black hover:bg-black/90 text-white"
+                              onClick={() => onCheckout(product.id)}
                             >
-                              <Button className="h-12 w-full uppercase text-lg rounded-full bg-black hover:bg-black/90 text-white">
-                                <Image
-                                  src={
-                                    ASSETS["credit-card-white.svg"] ||
-                                    "/placeholder.svg"
-                                  }
-                                  width={30}
-                                  height={30}
-                                  alt="Credit Card"
-                                />
-                                {t("cart-dropdown.checkout")}
-                              </Button>
-                            </Link>
+                              <Image
+                                src={
+                                  ASSETS["credit-card-white.svg"] ||
+                                  "/placeholder.svg"
+                                }
+                                width={30}
+                                height={30}
+                                alt="Credit Card"
+                              />
+                              {t("cart-dropdown.checkout")}
+                            </Button>
                           </div>
                         </div>
                       </div>
