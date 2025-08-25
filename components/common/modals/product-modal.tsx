@@ -296,9 +296,9 @@ export default function ProductModal() {
                                 >
                                   <Button
                                     variant="outline"
-                                    className="w-full h-12 text-lg rounded-full"
+                                    className="w-full h-12 text-lg rounded-full font-semibold"
                                   >
-                                    <span className="uppercase">
+                                    <span className="uppercase font-normal">
                                       {t("product.see-seller-name-closet")}
                                     </span>{" "}
                                     {product.seller.firstName.toUpperCase()}
@@ -468,7 +468,7 @@ export default function ProductModal() {
         open={mobileDrawerOpen}
         onOpenChange={() => setMobileDrawerOpen(false)}
       >
-        <DrawerContent className="p-8">
+        <DrawerContent className="py-8 px-5">
           {productsLoading ? (
             <div className="h-[400px] flex justify-center items-center">
               <MoonLoader color="#989898" size={40} />
@@ -506,9 +506,9 @@ export default function ProductModal() {
                             >
                               <Button
                                 variant="outline"
-                                className="w-full h-12 text-lg rounded-full"
+                                className="w-full h-12 rounded-full font-semibold"
                               >
-                                <span className="uppercase">
+                                <span className="uppercase font-normal">
                                   {t("product.see-seller-name-closet")}
                                 </span>{" "}
                                 {product.seller.firstName.toUpperCase()}
@@ -524,13 +524,13 @@ export default function ProductModal() {
                             >
                               <Button
                                 variant="outline"
-                                className="h-12 w-full uppercase text-lg rounded-full bg-gray-100"
+                                className="h-12 w-full uppercase rounded-full bg-gray-100"
                               >
                                 {t("common.see-more")}
                               </Button>
                             </Link>
                             <Button
-                              className="block h-12 w-full uppercase text-lg rounded-full bg-black hover:bg-black/90 text-white"
+                              className="h-12 w-full uppercase rounded-full bg-black hover:bg-black/90 text-white"
                               onClick={() => onCheckout(product.id)}
                             >
                               <Image
@@ -538,8 +538,8 @@ export default function ProductModal() {
                                   ASSETS["credit-card-white.svg"] ||
                                   "/placeholder.svg"
                                 }
-                                width={30}
-                                height={30}
+                                width={20}
+                                height={20}
                                 alt="Credit Card"
                               />
                               {t("cart-dropdown.checkout")}
